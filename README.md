@@ -26,6 +26,7 @@ html5 canvas display ROI draw ROI and node edit
           display.render();
       }
 ```
+![display_roi_image](https://github.com/chennian32/web_display/blob/main/displayroi.png)
 ## draw ROI
 ``` javascript
       let image = new Image();
@@ -55,6 +56,7 @@ html5 canvas display ROI draw ROI and node edit
           }
       }
 ```
+![drawroi_roi_image](https://github.com/chennian32/web_display/blob/main/drawroi.png)
 ## node edit
 ``` javascript
       window.onload=function(){
@@ -85,3 +87,4 @@ html5 canvas display ROI draw ROI and node edit
         });
       }
 ```
+![node_edit_image](https://github.com/chennian32/web_display/blob/main/nodeedit.png)
