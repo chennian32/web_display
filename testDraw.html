@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="web_display.src.js"></script>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="1280" height="768"></canvas>
+    <script>
+        let image = new Image();
+        image.src = "1.jpg";
+        image.onload = function () {
+            let canvas = document.getElementById("mycanvas");
+            let display = new ROIDrawDisplay(canvas, true);
+            display.setDrawParam(Shape.Rect1Shape, "#00ff0080", 10, 5, 100);
+            display.setDisplayImage(image);
+            display.addRect2ROI(100, 100, 0, 100, 100, "#00ff0080");
+            display.addRect2ROI(200, 200, 0, 100, 100, "#00ff0080");
+            // display.getInformation=function(info){
+            //     console.log(info.x.toString()+":"+info.y.toString());
+            // }
+            display.selectOneROI(1);
+            display.enableDisplay();
+            display.render();
+            //display.copyROI();
+            //display.draw(Shape.PolygonShape);
+            //display.measure();
+            display.draw(Shape.PolygonShape);
+            display.endDraw=function(roi){
+                console.log(JSON.stringify(roi));
+            }
+            display.endModify=function(roi){
+                console.log(JSON.stringify(roi));
+            }
+        }
+    </script>
+</body>
+
+</html>

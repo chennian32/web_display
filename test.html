@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<img lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="web_display.src.js"></script>
+</head>
+
+<img>
+    <canvas id="mycanvas" width="1920" height="1080">
+    </canvas>
+    <script>
+        window.onload=function(){
+        let canvas = document.getElementById("mycanvas");
+        let scene = new NodeScene();
+        let display = new NodeDisplay(canvas,scene);
+        let node1 = scene.createNode("测试1111",300,200,"1.svg");
+        let i1 = node1.addInput("输入1");
+        let i2 = node1.addInput("输入2");
+        let o1 = node1.addOutput("输出1");
+        let o2 = node1.addOutput("输出2");
+        let node2= scene.createNode("测试2222222",500,300,"2.svg");
+        let i3 = node2.addInput("输入3");
+        let i4 = node2.addInput("输入4");
+        let o3 = node2.addOutput("输出3");
+        let o4 = node2.addOutput("输出4");
+        let node3 = scene.createNode("测试333333",800,300,"3.svg");
+        let i5 = node3.addInput("输入5");
+        let o6 = node3.addOutput("输出5");
+        scene.createConnection(o1,i3);
+        scene.createConnection(o2,i4);
+        scene.createConnection(o4,i5);
+        display.enableDisplay();
+        display.render();
+        let nr = new NodeRunner(scene);
+        nr.apply(function(e){
+            console.log(e.name);
+        });
+        }
+    </script>
+</body>
+
+</html>

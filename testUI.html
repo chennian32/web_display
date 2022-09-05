@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-row>
+        <el-button >默认按钮</el-button>
+        <el-button type="primary">主要按钮</el-button>
+        <el-button type="success">成功按钮</el-button>
+        <el-button type="info">信息按钮</el-button>
+        <el-button type="warning">警告按钮</el-button>
+        <el-button type="danger">危险按钮</el-button>
+      </el-row>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</html>
+
+

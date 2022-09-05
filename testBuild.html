@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<img lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <script type="text/javascript" src="web_display.src.js"></script>
+</head>
+
+<img>
+    <canvas id="mycanvas" width="1920" height="1080">
+    </canvas>
+    <script>
+        window.onload=function(){
+        let canvas = document.getElementById("mycanvas");
+        let scene = new NodeScene();
+        let display = new NodeDisplay(canvas,scene);
+        let builder = new NodeBuilder("测试构建",100,200,"1.svg");
+        builder.addBooleanInput("使能",false);
+        builder.addDecimalInput("延时",100,false);
+        builder.addStringInput("时间类型","毫秒",["秒","毫秒"]);
+        builder.addDecimalOutput("延时2");
+        builder.buildNode(scene);
+        display.enableDisplay();
+        display.render();
+        let nr = new NodeRunner(scene);
+        nr.apply(function(e){
+            let loader=new NodeLoader(e);
+            let v=loader.getInput("延时");
+            loader.setOutput("延时2",v+1);
+            let v2=loader.getOutput("延时2");
+            console.log(v2);
+        });
+        scene.onSelectChanged=function(nodes){
+            if(nodes.size===0)
+                console.log("Empty");
+            for(let [k,v] of nodes){
+                console.log(k);
+            }
+        }
+        console.log(builder.save());
+        }
+    </script>
+</body>
+
+</html>
